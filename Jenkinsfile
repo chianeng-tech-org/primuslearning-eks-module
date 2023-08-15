@@ -28,7 +28,11 @@ pipeline{
             steps{
                 script{
                     withAWS([credentials:"${params.creds}",region: "${params.region}"]){
-                        sh "terraform init - no color"
+                        terraformInit()
+                        sh"""
+                        terraform plan -no-color -var-file $WORKSPACE/vars/terraform.tfvars
+                        terraform apply  -var-file $WORKSPACE/vars/terraform.tfvars -no-color -auto-approve
+                        """
                     }
                 }
             }
@@ -38,7 +42,11 @@ pipeline{
             steps{
                 script{
                     withAWS([credentials:"${params.creds}",region: "${params.region}"]){
-                        sh"ls-l"
+                        terraformInit()
+                        sh"""
+                        terraform plan -no-color -var-file $WORKSPACE/vars/terraform.tfvars
+                        terraform destroy  -var-file $WORKSPACE/vars/terraform.tfvars -no-color -auto-approve
+                        """
                     }
                 }
             }
@@ -62,3 +70,12 @@ void setParams(){
     sh"cat $WORKSPACE/vars/terraform.tfvars"
 }
 
+void terraformInit(){
+    def tfworkspace = "${params.environment}-${params.team}"
+    sh"""
+    terraform init -no-color
+    terraform workspace select -no-color ${tfworkspace} || terraform workspace new -no-color ${tfworkspace}
+    terraform workspace show -no-color
+    terraform validate -no-color
+    """
+}
