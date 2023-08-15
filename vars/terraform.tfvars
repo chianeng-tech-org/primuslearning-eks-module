@@ -1,6 +1,6 @@
 default_tags = {
   Environment : "dev",
-  Team : "alpha",
+  Team : "omega",
   Account : "primus-learning",
 }
 
