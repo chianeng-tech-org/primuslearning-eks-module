@@ -28,7 +28,7 @@ pipeline{
             steps{
                 script{
                     withAWS([credentials:"${params.creds}",region: "${params.region}"]){
-                        sh"aws s3 ls"
+                        sh "terraform init - no color"
                     }
                 }
             }
