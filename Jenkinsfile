@@ -18,7 +18,6 @@ pipeline{
         stage("init build params"){
             steps{
                 script{
-                    sh"ls -l"
                     sh"cat ${WORKSPACE}var/terraform.tfvars"  
                 }
             }   
