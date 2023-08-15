@@ -27,7 +27,9 @@ pipeline{
             when { equals expected: 'build', actual: params.action }
             steps{
                 script{
-                    sh"ls -l"
+                    withAWS([credentials:"${params.creds}",region: "${params.region}"]){
+                        sh"ls-l"
+                    }
                 }
             }
         }
@@ -35,7 +37,9 @@ pipeline{
             when { equals expected: 'destroy', actual: params.action }
             steps{
                 script{
-                    sh"ls -l"
+                    withAWS([credentials:"${params.creds}",region: "${params.region}"]){
+                        sh"ls-l"
+                    }
                 }
             }
         }
