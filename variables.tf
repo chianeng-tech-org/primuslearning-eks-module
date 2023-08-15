@@ -82,8 +82,8 @@ variable "app_node_group_instance_type" {
   type        = string
   default     = "t3.medium"
 }
-variable "app_node_group_desired_size" { default = 3 }
-variable "app_node_group_max_size" { default = 4 }
+variable "app_node_group_desired_size" { default = 4 }
+variable "app_node_group_max_size" { default = 2 }
 variable "app_node_group_min_size" { default = 1 }
 variable "app_node_group_disk_size" {
   description = "Disk size in GiB for nodes. Defaults to `20`"

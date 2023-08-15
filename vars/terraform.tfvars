@@ -4,7 +4,7 @@ default_tags = {
   Account : "ACCOUNT",
 }
 
-app_node_group_desired_size = DESIRE
+app_node_group_desired_size = DESIRED
 app_node_group_max_size = MAX
 app_node_group_min_size = MIN
 
