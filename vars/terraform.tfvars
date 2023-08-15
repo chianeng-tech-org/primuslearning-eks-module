@@ -1,9 +1,15 @@
 default_tags = {
-  Environment : "dev",
-  Team : "omega",
-  Account : "primus-learning",
+  Environment : "ENV",
+  Team : "TEAM",
+  Account : "ACCOUNT",
 }
 
-aws_region = "us-east-2"
+app_node_group_desired_size = DESIRE
+app_node_group_max_size = MAX
+app_node_group_min_size = MIN
 
+aws_region = "REGION"
 
+eks_vpc_cidr = CIDR
+eks_vpc_public_subnet_cidr = PUBLIC
+eks_vpc_private_subnet_cidr = PRIVATE
